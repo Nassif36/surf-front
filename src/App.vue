@@ -1,35 +1,45 @@
 <template>
- <aside class="home-redes" :class="{ show: showSidebar }">
-    <a href="/" class="logo">
-      <img src="~@/assets/logo.png" alt=""/>
-    </a>
-
-    <div class="home-navigation">
-      <div class="bars"  @click="showNav">
+  <div class="navigation-mobile">
+          <div class="bars"  @click="showNav">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
       </div>
-
+      <a href="/" class="logo">
+      <img src="~@/assets/logo.png" alt=""/>
+    </a>
+    </div>
+ <aside class="home-redes" :class="{ show: showSidebar }">
+    <a href="/" class="logo desktop">
+      <img src="~@/assets/logo.png" alt=""/>
+    </a>
+  
+    <div class="home-navigation ">
+      <div class="bars desktop"  @click="showNav">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
       
-      <router-link  to="/"   class="nav-link">
+      
+      <router-link  to="/"   class="nav-link" @click="hideNav">
         <div class="link-box">
           <i class="fas fa-home"></i>
-          <p>Home</p>
+          <p >Home</p>
         </div>
       </router-link>
 
-      <router-link  to="/about" class="nav-link">
+      <router-link  to="/about" class="nav-link" @click="hideNav">
         <div class="link-box">
           <i class="fas fa-info"></i>
-          <p>About</p>
+          <p >About</p>
         </div>
       </router-link>
 
-      <router-link  to="/clases" class="nav-link">
+      <router-link  to="/clases" class="nav-link" @click="hideNav">
         <div class="link-box">
           <i class="fas fa-calendar"></i>
-          <p>Reserva</p>
+          <p >Reserva</p>
         </div>
       </router-link>
 
@@ -68,6 +78,9 @@ export default {
     showNav() {
       this.showSidebar = !this.showSidebar;
     },
+    hideNav() {
+      this.showSidebar = false;
+    },
   },
 
 
@@ -94,7 +107,47 @@ export default {
 .fade-enter-from {
   transition: all 0.6s ease-in;
 }
+  .navigation-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background:white;
+    
+    padding: .1em .6em;
+      @media screen and(min-width: 1100px) {
+        display: none;
+      }
+    .logo {
 
+    img {
+      max-width: 50px;
+    }
+  }
+    .bars {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 1s ease;
+    &.desktop {
+  @media screen and(max-width: 1100px) {
+    display: none;
+  }
+}
+    .bar {
+      width: 1.6em;
+      height: 3px;
+      margin: .2em 0;
+      color: black;
+      background: black;
+      margin-top: 15%;
+      transition: all 1s ease;
+      transform-origin: 55%;
+
+    }
+  }
+  }
+  
 .home-redes {
   display: flex;
   justify-content: center;
@@ -105,9 +158,12 @@ export default {
   background-color: white;
   position: absolute;
   transition: all 1s ease;
-
-  .logo {
-    padding-top: 15%;
+  @media screen and(max-width:  1100px) {
+    transform: translateX(-100%);
+  }
+  
+   .logo {
+     padding: 2em 0;
     img {
       max-width: 50px;
     }
@@ -117,9 +173,13 @@ export default {
     flex-direction: column;
     cursor: pointer;
     transition: all 1s ease;
-    
+    &.desktop {
+  @media screen and(max-width: 1100px) {
+    display: none;
+  }
+}
     .bar {
-      width: calc(1vw + .5em);
+      width: 1.6em;
       height: 3px;
       margin: .2em 0;
       color: black;
@@ -131,11 +191,11 @@ export default {
     }
   }
   &.show {
-    
+    transform: translateX(0%);
     .home-navigation {
      width: 22vw;
      @media screen and(max-width:  1100px) {
-          width: 35vw;
+          width: 100vw;
         }
 
     }
@@ -150,6 +210,9 @@ export default {
             background: black;
             color: white; 
             i {
+              color: white;
+            }
+            p {
               color: white;
             }
           }
@@ -279,6 +342,12 @@ export default {
         color: orchid;
       }
     }
+  }
+}
+.desktop {
+    display: none;
+  @media screen and(min-width: 1100px) {
+    display: block;
   }
 }
 

@@ -43,6 +43,13 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media screen and(max-width: 1100px) {
+    padding: 0 .3em;
+  flex-direction: column;
+  width: 100%;
+  background: $blanco;
+  justify-content: center;
+}
 }
 
 .about-flex {
@@ -53,9 +60,14 @@ export default {
   flex-direction: column;
   min-height: 20vh;
   flex-basis: 65%;
+  
   @media screen and(max-width: 1500px) {
     flex-basis: 50%;
-  }
+  }  
+  @media screen and(max-width: 1100px) {
+     flex-basis: 100%;
+     width: 90vw;
+   }
 
   .about-text{
     text-align: left;

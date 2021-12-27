@@ -24,7 +24,7 @@ $radius: 33px;
 $shadow: -2px 13px 42px -17px rgba(0, 0, 0, 0.8);
 
 @mixin gradient($primero, $segundo) {
-    background: linear-gradient(to bottom, $primero 0%, $segundo 0);
+    background: $blanco;
 
     @include tablet {
         background: linear-gradient(to right, $primero 50%, $segundo 0);
@@ -33,7 +33,7 @@ $shadow: -2px 13px 42px -17px rgba(0, 0, 0, 0.8);
 
 @mixin section($background) {
     padding: 0 0 0 $paddingSide;
-    height: 100vh;
+    min-height: 100vh;
     background-color: $background;
 
 }
