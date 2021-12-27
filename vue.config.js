@@ -1,7 +1,7 @@
 // vue.config.js
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ?
-        '' :
+        '/surfyarte/' :
         '/',
     css: {
         loaderOptions: {
@@ -12,5 +12,4 @@ module.exports = {
             }
         }
     }
-    
 }
